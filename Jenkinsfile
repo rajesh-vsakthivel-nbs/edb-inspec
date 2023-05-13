@@ -76,15 +76,17 @@ pipeline {
                             try {
                                  {
 
-                                    sh '''
+                                    
                              
                                         inspec exec . -t k8s://
               
                                         echo "Inspec Rajesh"
                                         }
+                                        
                                         }
-                                        }
-                                        }
+                        }
+                        
+                                        
             
 
             }
