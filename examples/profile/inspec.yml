@@ -1,0 +1,8 @@
+name: inspec-k8s
+title: InSpec Profile
+maintainer: Rajesh
+copyright: Rajesh
+copyright_email: rajesh.venugopalsakthivel@nationwide.co.uk
+license: Apache-2.0
+summary: An InSpec Compliance Profile
+version: 0.1.0
