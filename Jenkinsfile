@@ -78,6 +78,7 @@ pipeline {
 
                             sh  """
                                  echo "inspec Rajesh ... "
+                                 inspec --chef-license=accept-silent
                                  inspec exec k8s.rb
                              
 
