@@ -70,8 +70,21 @@ pipeline {
         stage('Run Tests') {
 
             steps {
+              
+                    script {
+                        container('test') {
+                            try {
+                                 {
 
+                                    sh '''
+                             
+                                        inspec exec . -t k8s://
+              
                                         echo "Inspec Rajesh"
+                                        }
+                                        }
+                                        }
+                                        }
             
 
             }
