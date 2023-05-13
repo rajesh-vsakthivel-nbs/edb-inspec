@@ -74,7 +74,7 @@ pipeline {
                     script {
                         container('test') {
                             try {
-                                 {
+                                 
 
                                     
                              
