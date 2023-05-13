@@ -23,3 +23,8 @@ describe kubernetes_pod(namespace: 'banking-cco-dev1') do
     it { should be_running }
   end
 end
+
+describe kubernetes_pod(name: 'eo-svc-lao-95b498d95-mftjn', namespace: 'banking-lao-dev1') do
+    it { should exist }
+    it { should be_running }
+  end
