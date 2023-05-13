@@ -67,32 +67,27 @@ pipeline {
 
     stages {
        
-        stage('Run Tests') {
+ stage('Run Tests') {
 
             steps {
-              
-                    script {
-                        container('test') {
-                            try {
-                                 
+                script {
+                    container('test') {
+                        withCredentials([
+                                string(credentialsId: 'npm_token', variable: 'NPM_TOKEN')
+                        ]) {
 
-                                    
+                            sh  """
+                                 echo "inspec Rajesh ... "
+                                 inspec exec k8s.rb
                              
-                                        inspec exec . -t k8s://
-              
-                                        echo "Inspec Rajesh"
-                                        }
-                                        
-                                        }
-                        }
-                        
-                                        
-            
 
+                                """
+                        }
+                    }
+                }
             }
 
-
-        } //End of Run Tests stage
+        } //End of Lint Check stage
         
     }
 }
