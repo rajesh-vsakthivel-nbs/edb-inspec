@@ -79,7 +79,8 @@ pipeline {
                             sh  """
                                  echo "inspec Rajesh ... "
                                  inspec --chef-license=accept-silent
-                                 inspec exec examples/profile/controls/kubernetespods.rb
+                                 inspec exec examples/profile/controls/kubernetespods.rb -t k8s://
+                            
                              
 
                                 """
