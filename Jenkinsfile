@@ -71,7 +71,7 @@ pipeline {
 
             steps {
 
-                                        echo "Running Branch Test Suite without ENV Variables"
+                                        echo "Inspec Rajesh"
             
 
             }
