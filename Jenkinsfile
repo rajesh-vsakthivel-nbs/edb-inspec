@@ -70,52 +70,10 @@ pipeline {
         stage('Run Tests') {
 
             steps {
-                catchError(buildResult: "SUCCESS", stageResult: "SUCCESS") {
-                    script {
-                        container('test') {
-                            try {
-                                withCredentials([
-                                        string(credentialsId: 'npm_token', variable: 'NPM_TOKEN'),
-                                        string(credentialsId: 'lao_notprod_mongo_connection', variable: 'MONGO_CONNECTION_STRING'),
-                                        usernamePassword(credentialsId: 'cco_browserstack_creds', usernameVariable: 'BROWSERSTACK_USER_NAME', passwordVariable: 'BROWSERSTACK_KEY')
-                                ]) {
 
-                                    sh '''
-                                     export NODE_OPTIONS=--max-old-space-size=8192
-                                     if [ -z "${npmRunCmd}" ]
-                                     then
                                         echo "Running Branch Test Suite without ENV Variables"
-                                        npm run browserStacktests-gui -- --environment="dev1" --componentOrPageName="**"  --ff="e2eLoanApplication"
-                                     else
-                                        echo "Running Regression Suite with ENV Variables"
-                                        npm run ${npmRunCmd} -- --environment=${testEnvironment} --componentOrPageName=${componentOrPageName}  --ff=${featureFileName}
+            
 
-                                     fi
-                                     cp -r tests/reports/json-results ${WORKSPACE}
-                                     cp -a tests/reports/json-results/. ${WORKSPACE}/reports/BDD
-
-                                     '''
-                                }
-
-                            }
-                            finally {
-                                //cucumber fileIncludePattern: 'reports/*.json'
-                                BUILDSTATUS = sh(
-                                        script: "node tests/utilities/resultAnalysis/resultAnalysis.js",
-                                        returnStdout: true
-                                ).trim()
-                                archiveArtifacts 'tests/reports/**'
-                                publishHTML(target: [allowMissing         : false,
-                                                     alwaysLinkToLastBuild: true,
-                                                     keepAll              : true,
-                                                     reportDir            : 'tests/reports',
-                                                     reportFiles          : 'index.html',
-                                                     reportName           : 'Test Reports',
-                                                     reportTitles         : 'Test Report'])
-                            }
-                        }
-                    }
-                }
             }
 
 
