@@ -17,3 +17,4 @@ control "k8s-1.0" do
   describe k8sobject(api: 'v1', type: 'namespaces', name: 'banking-lao-dev1') do
     it { should exist }
   end
+end
