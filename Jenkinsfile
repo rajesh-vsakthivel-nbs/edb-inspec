@@ -32,7 +32,7 @@ pipeline {
                         memory: "4Gi"
                         cpu: "2"
                   - name: test
-                    image: edb-docker-dev-local.artifactory.aws.nbscloud.co.uk/pace-test/edbchefinspec
+                    image: edb-docker-dev-local.artifactory.aws.nbscloud.co.uk/pace-test/edbchefinspec:6.4.8
                     command:
                     - sleep
                     args:
