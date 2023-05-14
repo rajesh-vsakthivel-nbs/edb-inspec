@@ -78,7 +78,8 @@ pipeline {
 
                             sh  """
                                  echo "inspec Rajesh ... "
-                                 export KUBECONFIG=~/.kube/config
+                                 cat KUBECONFIG
+                                 export KUBECONFIG=/root/.kube/config
                                  inspec --chef-license=accept-silent
                                  inspec exec examples/profile/controls/kubernetespods.rb -t k8s://
                             
