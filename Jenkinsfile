@@ -77,6 +77,7 @@ pipeline {
                         ]) {
 
                             sh  """
+                                 aws eks update-kubeconfig --name edbhub-notprod --region eu-west-2
                                  echo "inspec Rajesh ... "
                                  inspec --chef-license=accept-silent
                                  inspec exec examples/profile/controls/kubernetespods.rb -t k8s://

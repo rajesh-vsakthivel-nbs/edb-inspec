@@ -7,4 +7,5 @@ RUN apk add --no-cache build-base bash git && \
     gem install train-kubernetes && \
     inspec plugin install train-kubernetes && \
     sed -ie 's#"= 0#"0#g' /root/.inspec/plugins.json && \
-    apk del build-base
+    apk del build-base && \
+    gem install kubernetes-cli -v 0.3.2 
